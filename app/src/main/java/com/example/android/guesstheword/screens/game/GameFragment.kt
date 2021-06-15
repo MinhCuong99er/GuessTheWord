@@ -50,7 +50,7 @@ class GameFragment : Fragment() {
                 container,
                 false
         )
-        Log.i("GameFragment", "Called ViewModelProviders.of!")
+
         viewModel = ViewModelProvider(this).get(GameViewModel::class.java)
 
         binding.gameViewModel = viewModel
@@ -74,5 +74,19 @@ class GameFragment : Fragment() {
             }
         })
         return binding.root
+
+    }
+    private fun buzz(pattern: LongArray) {
+        val buzzer = activity?.getSystemService<Vibrator>()
+        buzzer?.let {
+                // Vibrate for 500 milliseconds
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    buzzer.vibrate(VibrationEffect.createWaveform(pattern, -1))
+                } else {
+                    //deprecated in API 26
+                    buzzer.vibrate(pattern, -1)
+                }
+            }
+        }
     }
 }
