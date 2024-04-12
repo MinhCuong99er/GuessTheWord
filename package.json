@@ -1,19 +1,48 @@
 {
   "name": "gtour-demo-frontend",
   "version": "1.0.0",
-  "private": false,
+  "private": true,
+  "description": "NextJS project template by PKLogger",
+  "main": "index.tsx",
+  "repository": "https://github.com/MinhCuong99er/gtour-demo-frontend",
+  "author": {
+    "name": "PKLogger",
+    "email": "PKLogger@gmail.com",
+    "url": "https://gitlab.com/PKLogger"
+  },
+  "homepage": "https://minhcuong99er.github.io/gtour-demo-frontend",
   "scripts": {
     "dev": "next dev -p 2001",
     "build": "next build",
     "start": "next start -p 2001",
-    "lint": "next lint"
+    "type-check": "tsc --pretty --noEmit",
+    "lint": "eslint src --ext ts,tsx,js,jsx --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint src --ext js,jsx,ts,tsx --fix",
+    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,html}'",
+    "test": "jest",
+    "test-all": "yarn lint && yarn type-check && yarn test"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn run type-check"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx,js,jsx}": [
+      "yarn lint",
+      "yarn format"
+    ]
   },
   "dependencies": {
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "framer-motion": "^11.0.28",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
     "next": "14.2.0",
+    "prettier": "^3.2.5",
     "react": "^18",
     "react-dom": "^18"
   },
