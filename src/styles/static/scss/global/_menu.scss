@@ -1,0 +1,35 @@
+/*---------- example css ----------*/
+
+//example responsive css
+@media (min-width: $screen-sm-min) {
+  //mobile lanscape
+  .m-accumulatepoint-modal {
+    &__content {
+      &__text {
+        span {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}
+@media (min-width: $screen-sm-phone-large) {
+  //mobile lanscape
+}
+@media (min-width: $screen-md-min) {
+  //ipad portrait
+}
+@media (min-width: $screen-lg-min) {
+  //ipad lanscape & pc 1024x768px
+}
+@media (min-width: $screen-xl-min) {
+  //pc & mac 1280px grow up
+}
+@media (min-width: 1440px) {
+  //pc & mac 1440px grow up
+}
+@media (min-width: 1900px) {
+  //pc & mac 1900px grow up
+}
+//end example responsive css
+/*---------- end example css ----------*/
